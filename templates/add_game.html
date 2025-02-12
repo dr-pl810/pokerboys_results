@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Add Game</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="event_id">Event</label>
+        <select class="form-control" id="event_id" name="event_id" required>
+            {% for event in events %}
+            <option value="{{ event.EventId }}" {% if most_recent_event and event.EventId == most_recent_event.EventId %}selected{% endif %}>{{ event.Date }} - {{ event.HostName }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="active_players">Active Players</label>
+        <div>
+            {% for player in players %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="player_{{ player.PlayerId }}" name="active_players" value="{{ player.Name }}">
+                <label class="form-check-label" for="player_{{ player.PlayerId }}">{{ player.Name }}</label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="winner">Winner</label>
+        <select class="form-control" id="winner" name="winner" required>
+            {% for player in players %}
+            <option value="{{ player.Name }}">{{ player.Name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="runner_up">Runner Up</label>
+        <select class="form-control" id="runner_up" name="runner_up" required>
+            {% for player in players %}
+            <option value="{{ player.Name }}">{{ player.Name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Game</button>
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Leaderboard</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Sum of Points</th>
+            <th>Number of Games</th>
+            <th>Average Points per Game</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rank, player in enumerate(leaderboard_data, 1) %}
+        <tr>
+            <td>{{ rank }}</td>
+            <td>{{ player.Name }}</td>
+            <td>{{ player.SumOfPoints }}</td>
+            <td>{{ player.NumberOfGames }}</td>
+            <td>{{ "%.2f" % player.AvgPoints }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

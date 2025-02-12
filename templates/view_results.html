@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>View Results</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Event Date</th>
+            <th>Host Name</th>
+            <th>Game ID</th>
+            <th>Winner</th>
+            <th>Runner Up</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.Date }}</td>
+            <td>{{ result.HostName }}</td>
+            <td>{{ result.GameId }}</td>
+            <td>{{ result.Winner }}</td>
+            <td>{{ result.RunnerUp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

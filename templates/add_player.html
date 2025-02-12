@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Add Player</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Player</button>
+</form>
+<h2>Players</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for player in players %}
+        <tr>
+            <td>{{ player.Name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

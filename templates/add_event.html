@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Add Event</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <div class="form-group">
+        <label for="host_name">Host Name</label>
+        <select class="form-control" id="host_name" name="host_name" required>
+            {% for player in players %}
+            <option value="{{ player.Name }}">{{ player.Name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Event</button>
+</form>
+<h2>Events</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Host Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.Date }}</td>
+            <td>{{ event.HostName }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
